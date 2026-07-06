@@ -1,0 +1,18 @@
+{
+  "$schema": "https://rcade.dev/manifest.schema.json",
+  "name": "bumble-bard",
+  "display_name": "BumbleBard",
+  "description": "bumble-bard",
+  "visibility": "public",
+  "authors": [
+    {
+      "display_name": "Dan & Emanuel"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@rcade/input-classic",
+      "version": "1.0.0"
+    }
+  ]
+}
