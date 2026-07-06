@@ -48,16 +48,16 @@ Output goes to `dist/` and is ready for deployment.
 **Imported assets** (recommended) - Place in `src/` and import them. Vite bundles these with hashed filenames for cache busting:
 
 ```ts
-import spriteUrl from './sprite.png';
+import spriteUrl from "./sprite.png";
 
 let sprite: p5.Image;
 
 p.preload = () => {
-    sprite = p.loadImage(spriteUrl);
+  sprite = p.loadImage(spriteUrl);
 };
 
 p.draw = () => {
-    p.image(sprite, x, y);
+  p.image(sprite, x, y);
 };
 ```
 
@@ -71,15 +71,15 @@ The template uses p5.js in [instance mode](https://github.com/processing/p5.js/w
 import p5 from "p5";
 
 const sketch = (p: p5) => {
-    p.setup = () => {
-        p.createCanvas(336, 262);  // RCade dimensions
-    };
+  p.setup = () => {
+    p.createCanvas(336, 262); // RCade dimensions
+  };
 
-    p.draw = () => {
-        p.background(26, 26, 46);
-        p.fill(255);
-        p.ellipse(p.width / 2, p.height / 2, 50, 50);
-    };
+  p.draw = () => {
+    p.background(26, 26, 46);
+    p.fill(255);
+    p.ellipse(p.width / 2, p.height / 2, 50, 50);
+  };
 };
 
 new p5(sketch, document.getElementById("sketch")!);
@@ -90,20 +90,34 @@ new p5(sketch, document.getElementById("sketch")!);
 This template uses `@rcade/plugin-input-classic` for arcade input:
 
 ```ts
-import { PLAYER_1, SYSTEM } from '@rcade/plugin-input-classic'
+import { PLAYER_1, SYSTEM } from "@rcade/plugin-input-classic";
 
 // D-pad
-if (PLAYER_1.DPAD.up) { /* ... */ }
-if (PLAYER_1.DPAD.down) { /* ... */ }
-if (PLAYER_1.DPAD.left) { /* ... */ }
-if (PLAYER_1.DPAD.right) { /* ... */ }
+if (PLAYER_1.DPAD.up) {
+  /* ... */
+}
+if (PLAYER_1.DPAD.down) {
+  /* ... */
+}
+if (PLAYER_1.DPAD.left) {
+  /* ... */
+}
+if (PLAYER_1.DPAD.right) {
+  /* ... */
+}
 
 // Buttons
-if (PLAYER_1.A) { /* ... */ }
-if (PLAYER_1.B) { /* ... */ }
+if (PLAYER_1.A) {
+  /* ... */
+}
+if (PLAYER_1.B) {
+  /* ... */
+}
 
 // System
-if (SYSTEM.ONE_PLAYER) { /* Start game */ }
+if (SYSTEM.ONE_PLAYER) {
+  /* Start game */
+}
 ```
 
 ### Development Keyboard Controls
@@ -113,7 +127,7 @@ When developing locally, keyboard inputs are mapped to arcade controls:
 **Classic Controls (`@rcade/plugin-input-classic`)**
 
 | Player   | Action           | Key |
-|----------|------------------|-----|
+| -------- | ---------------- | --- |
 | Player 1 | UP               | W   |
 | Player 1 | DOWN             | S   |
 | Player 1 | LEFT             | A   |
@@ -132,7 +146,7 @@ When developing locally, keyboard inputs are mapped to arcade controls:
 **Spinner Controls (`@rcade/plugin-input-spinners`)**
 
 | Player   | Action        | Key |
-|----------|---------------|-----|
+| -------- | ------------- | --- |
 | Player 1 | Spinner Left  | C   |
 | Player 1 | Spinner Right | V   |
 | Player 2 | Spinner Left  | .   |
