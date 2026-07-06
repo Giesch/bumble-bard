@@ -11,6 +11,9 @@ importers:
       '@rcade/plugin-input-classic':
         specifier: ^0.2.1
         version: 0.2.4(typescript@5.9.3)
+      koota:
+        specifier: ^0.6.6
+        version: 0.6.6
       p5:
         specifier: ^1.11.3
         version: 1.11.13
@@ -631,6 +634,17 @@ packages:
   js-yaml@4.3.0:
     resolution: {integrity: sha512-1td788aAnnZ5qs7V2QIRl1owjtYpbKt749Y3xauqQgwIIGF/xXWz1wMTEBx5O3LK3lXLVuqXPdPxj2BoFHaW9Q==}
     hasBin: true
+
+  koota@0.6.6:
+    resolution: {integrity: sha512-Fn8lSooH3u9TIP+eAMugFrOju40Ec70+sB7x1eZBB3H0Lki2hyIbFAodk3NDB/RIRzoMs54O4422BVN6SbtWfw==}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      react: '>=18.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   lazyness@1.2.0:
     resolution: {integrity: sha512-KenL6EFbwxBwRxG93t0gcUyi0Nw0Ub31FJKN1laA4UscdkL1K1AxUd0gYZdcLU3v+x+wcFi4uQKS5hL+fk500g==}
@@ -1312,6 +1326,8 @@ snapshots:
   js-yaml@4.3.0:
     dependencies:
       argparse: 2.0.1
+
+  koota@0.6.6: {}
 
   lazyness@1.2.0: {}
 
