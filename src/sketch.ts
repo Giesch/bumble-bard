@@ -29,7 +29,9 @@ const sketch = (p: p5) => {
   };
 
   p.setup = () => {
-    bardAssembled = spriteAtlas["frames"][0]["frame"];
+    bardAssembled = spriteAtlas["frames"].find(
+      (f: any) => f["filename"] === "bard-assembled 0",
+    ).frame;
 
     p.createCanvas(WIDTH, HEIGHT);
     playerX = WIDTH / 2;
