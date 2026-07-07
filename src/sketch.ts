@@ -142,6 +142,11 @@ const sketch = (p: p5) => {
     if (justPressed("A")) {
       bardHeadAnimation.playOnce();
     }
+    if (PLAYER_1.B) {
+      bardTorsoAnimation.loop();
+    } else {
+      bardTorsoAnimation.stop();
+    }
 
     // Handle input from arcade controls
     if (PLAYER_1.DPAD.up) {
@@ -176,7 +181,7 @@ const sketch = (p: p5) => {
 
     bardHeadAnimation.update(deltaTime);
     bardLegsAnimation.update(deltaTime);
-    // bardTorsoAnimation.update(deltaTime);
+    bardTorsoAnimation.update(deltaTime);
 
     // DRAW
 
