@@ -1,7 +1,7 @@
 import p5 from "p5";
-import { PLAYER_1, SYSTEM } from "@rcade/plugin-input-classic";
+import { PLAYER_1 } from "@rcade/plugin-input-classic";
 
-/** The source position and size of a sprite in the spritesheet png */
+/** The source position and size of a sprite in the spritesheet png; sourced from aseprite json */
 type AsepriteFrame = {
   x: number;
   y: number;
@@ -19,7 +19,9 @@ let playerX: number;
 let playerY: number;
 let spriteSheet: p5.Image;
 let spriteAtlas: any;
-let bardAssembled: AsepriteFrame;
+let bardHead: AsepriteFrame;
+let bardTorso: AsepriteFrame;
+let bardLegs: AsepriteFrame;
 let flipPlayer = false;
 
 const sketch = (p: p5) => {
@@ -29,9 +31,11 @@ const sketch = (p: p5) => {
   };
 
   p.setup = () => {
-    bardAssembled = spriteAtlas["frames"].find(
-      (f: any) => f["filename"] === "bard-assembled 0",
-    ).frame;
+    const frames: any[] = spriteAtlas["frames"];
+
+    bardHead = frames.find((f) => f["filename"] === "bard-head 0").frame;
+    bardTorso = frames.find((f) => f["filename"] === "bard-torso 0").frame;
+    bardLegs = frames.find((f) => f["filename"] === "bard-legs 0").frame;
 
     p.createCanvas(WIDTH, HEIGHT);
     playerX = WIDTH / 2;
@@ -93,7 +97,14 @@ const sketch = (p: p5) => {
     p.background(26, 26, 46);
 
     p.noSmooth();
-    drawSprite(bardAssembled, playerX, playerY, flipPlayer);
+
+    // to let the legs underlap the toroso,
+    // they're offset by 1, and drawn in reverse
+    const torsoY = playerY + bardHead.h;
+    const legsY = torsoY + bardTorso.h - 1;
+    drawSprite(bardLegs, playerX, legsY, flipPlayer);
+    drawSprite(bardTorso, playerX, torsoY, flipPlayer);
+    drawSprite(bardHead, playerX, playerY, flipPlayer);
   };
 };
 
