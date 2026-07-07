@@ -67,12 +67,21 @@ class Animation {
     this.playing = "once";
     this.current = 0;
   }
+
+  loop() {
+    this.playing = "loop";
+  }
+
+  stop() {
+    this.playing = "off";
+    this.current = 0;
+  }
 }
 
 // Rcade game dimensions
 const WIDTH = 336;
 const HEIGHT = 262;
-const SPEED = 4;
+const SPEED = 2;
 const PLAYER_SIZE = 20;
 
 let playerX: number;
@@ -134,8 +143,6 @@ const sketch = (p: p5) => {
       bardHeadAnimation.playOnce();
     }
 
-    bardHeadAnimation.update(deltaTime);
-
     // Handle input from arcade controls
     if (PLAYER_1.DPAD.up) {
       playerY -= SPEED;
@@ -152,9 +159,24 @@ const sketch = (p: p5) => {
       playerX += SPEED;
     }
 
+    const isWalking =
+      PLAYER_1.DPAD.left ||
+      PLAYER_1.DPAD.right ||
+      PLAYER_1.DPAD.up ||
+      PLAYER_1.DPAD.down;
+    if (isWalking) {
+      bardLegsAnimation.loop();
+    } else {
+      bardLegsAnimation.stop();
+    }
+
     // Keep player in bounds
     playerX = p.constrain(playerX, PLAYER_SIZE / 2, WIDTH - PLAYER_SIZE / 2);
     playerY = p.constrain(playerY, PLAYER_SIZE / 2, HEIGHT - PLAYER_SIZE / 2);
+
+    bardHeadAnimation.update(deltaTime);
+    bardLegsAnimation.update(deltaTime);
+    // bardTorsoAnimation.update(deltaTime);
 
     // DRAW
 
