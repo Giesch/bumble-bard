@@ -1,7 +1,25 @@
 { "frames": [
    {
+    "filename": "angry-dane-1 0",
+    "frame": { "x": 0, "y": 0, "w": 98, "h": 71 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 98, "h": 71 },
+    "sourceSize": { "w": 98, "h": 71 },
+    "duration": 100
+   },
+   {
+    "filename": "background 0",
+    "frame": { "x": 0, "y": 71, "w": 1024, "h": 256 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1024, "h": 256 },
+    "sourceSize": { "w": 1024, "h": 256 },
+    "duration": 100
+   },
+   {
     "filename": "bard-assembled 0",
-    "frame": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "frame": { "x": 0, "y": 327, "w": 64, "h": 64 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
@@ -10,7 +28,7 @@
    },
    {
     "filename": "bard-head 0",
-    "frame": { "x": 0, "y": 64, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 391, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -19,7 +37,7 @@
    },
    {
     "filename": "bard-head 1",
-    "frame": { "x": 32, "y": 64, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 391, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -28,7 +46,7 @@
    },
    {
     "filename": "bard-legs 0",
-    "frame": { "x": 0, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -37,7 +55,7 @@
    },
    {
     "filename": "bard-legs 1",
-    "frame": { "x": 32, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -46,7 +64,7 @@
    },
    {
     "filename": "bard-legs 2",
-    "frame": { "x": 64, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 64, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -55,7 +73,7 @@
    },
    {
     "filename": "bard-legs 3",
-    "frame": { "x": 96, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 96, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -64,7 +82,7 @@
    },
    {
     "filename": "bard-legs 4",
-    "frame": { "x": 128, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 128, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -73,7 +91,7 @@
    },
    {
     "filename": "bard-legs 5",
-    "frame": { "x": 160, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 160, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -82,7 +100,7 @@
    },
    {
     "filename": "bard-legs 6",
-    "frame": { "x": 192, "y": 96, "w": 32, "h": 32 },
+    "frame": { "x": 192, "y": 423, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -91,7 +109,7 @@
    },
    {
     "filename": "bard-torso 0",
-    "frame": { "x": 0, "y": 128, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 455, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -100,7 +118,7 @@
    },
    {
     "filename": "bard-torso 1",
-    "frame": { "x": 32, "y": 128, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 455, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -109,7 +127,7 @@
    },
    {
     "filename": "beverage-thoughts-1 0",
-    "frame": { "x": 0, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -118,7 +136,7 @@
    },
    {
     "filename": "beverage-thoughts-1 1",
-    "frame": { "x": 32, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -127,7 +145,7 @@
    },
    {
     "filename": "beverage-thoughts-1 2",
-    "frame": { "x": 64, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 64, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -136,7 +154,7 @@
    },
    {
     "filename": "beverage-thoughts-1 3",
-    "frame": { "x": 96, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 96, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -145,7 +163,7 @@
    },
    {
     "filename": "beverage-thoughts-1 4",
-    "frame": { "x": 128, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 128, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -154,7 +172,7 @@
    },
    {
     "filename": "beverage-thoughts-1 5",
-    "frame": { "x": 160, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 160, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -163,7 +181,7 @@
    },
    {
     "filename": "beverage-thoughts-1 6",
-    "frame": { "x": 192, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 192, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -172,7 +190,7 @@
    },
    {
     "filename": "beverage-thoughts-1 7",
-    "frame": { "x": 224, "y": 160, "w": 32, "h": 32 },
+    "frame": { "x": 224, "y": 487, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -181,7 +199,7 @@
    },
    {
     "filename": "beverage-thoughts-2 0",
-    "frame": { "x": 0, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -190,7 +208,7 @@
    },
    {
     "filename": "beverage-thoughts-2 1",
-    "frame": { "x": 32, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -199,7 +217,7 @@
    },
    {
     "filename": "beverage-thoughts-2 2",
-    "frame": { "x": 64, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 64, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -208,7 +226,7 @@
    },
    {
     "filename": "beverage-thoughts-2 3",
-    "frame": { "x": 96, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 96, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -217,7 +235,7 @@
    },
    {
     "filename": "beverage-thoughts-2 4",
-    "frame": { "x": 128, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 128, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -226,7 +244,7 @@
    },
    {
     "filename": "beverage-thoughts-2 5",
-    "frame": { "x": 160, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 160, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -235,7 +253,7 @@
    },
    {
     "filename": "beverage-thoughts-2 6",
-    "frame": { "x": 192, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 192, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -244,7 +262,7 @@
    },
    {
     "filename": "beverage-thoughts-2 7",
-    "frame": { "x": 224, "y": 192, "w": 32, "h": 32 },
+    "frame": { "x": 224, "y": 519, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -253,7 +271,7 @@
    },
    {
     "filename": "danish-thgouhts-1 0",
-    "frame": { "x": 0, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -262,7 +280,7 @@
    },
    {
     "filename": "danish-thgouhts-1 1",
-    "frame": { "x": 32, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -271,7 +289,7 @@
    },
    {
     "filename": "danish-thgouhts-1 2",
-    "frame": { "x": 64, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 64, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -280,7 +298,7 @@
    },
    {
     "filename": "danish-thgouhts-1 3",
-    "frame": { "x": 96, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 96, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -289,7 +307,7 @@
    },
    {
     "filename": "danish-thgouhts-1 4",
-    "frame": { "x": 128, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 128, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -298,7 +316,7 @@
    },
    {
     "filename": "danish-thgouhts-1 5",
-    "frame": { "x": 160, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 160, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -307,7 +325,7 @@
    },
    {
     "filename": "danish-thgouhts-1 6",
-    "frame": { "x": 192, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 192, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -316,7 +334,7 @@
    },
    {
     "filename": "danish-thgouhts-1 7",
-    "frame": { "x": 224, "y": 224, "w": 32, "h": 32 },
+    "frame": { "x": 224, "y": 551, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -325,7 +343,7 @@
    },
    {
     "filename": "ham-thoughts 0",
-    "frame": { "x": 0, "y": 256, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 583, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -333,8 +351,26 @@
     "duration": 100
    },
    {
+    "filename": "hwaet-speech 0",
+    "frame": { "x": 0, "y": 615, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 100
+   },
+   {
+    "filename": "music-speech 0",
+    "frame": { "x": 0, "y": 679, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 100
+   },
+   {
     "filename": "pillaging-thoughts-1 0",
-    "frame": { "x": 0, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -343,7 +379,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 1",
-    "frame": { "x": 32, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -352,7 +388,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 2",
-    "frame": { "x": 64, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 64, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -361,7 +397,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 3",
-    "frame": { "x": 96, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 96, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -370,7 +406,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 4",
-    "frame": { "x": 128, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 128, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -379,7 +415,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 5",
-    "frame": { "x": 160, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 160, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -388,7 +424,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 6",
-    "frame": { "x": 192, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 192, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -397,7 +433,7 @@
    },
    {
     "filename": "pillaging-thoughts-1 7",
-    "frame": { "x": 224, "y": 288, "w": 32, "h": 32 },
+    "frame": { "x": 224, "y": 743, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -405,8 +441,26 @@
     "duration": 100
    },
    {
+    "filename": "progress-bar-1 0",
+    "frame": { "x": 0, "y": 775, "w": 30, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 29 },
+    "sourceSize": { "w": 30, "h": 29 },
+    "duration": 100
+   },
+   {
+    "filename": "progress-bar-2 0",
+    "frame": { "x": 0, "y": 804, "w": 30, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 29 },
+    "sourceSize": { "w": 30, "h": 29 },
+    "duration": 100
+   },
+   {
     "filename": "sleepy-thoughts 0",
-    "frame": { "x": 0, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 0, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -415,7 +469,7 @@
    },
    {
     "filename": "sleepy-thoughts 1",
-    "frame": { "x": 32, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 32, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -424,7 +478,7 @@
    },
    {
     "filename": "sleepy-thoughts 2",
-    "frame": { "x": 64, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 64, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -433,7 +487,7 @@
    },
    {
     "filename": "sleepy-thoughts 3",
-    "frame": { "x": 96, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 96, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -442,7 +496,7 @@
    },
    {
     "filename": "sleepy-thoughts 4",
-    "frame": { "x": 128, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 128, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -451,7 +505,7 @@
    },
    {
     "filename": "sleepy-thoughts 5",
-    "frame": { "x": 160, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 160, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -460,7 +514,7 @@
    },
    {
     "filename": "sleepy-thoughts 6",
-    "frame": { "x": 192, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 192, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -469,7 +523,7 @@
    },
    {
     "filename": "sleepy-thoughts 7",
-    "frame": { "x": 224, "y": 320, "w": 32, "h": 32 },
+    "frame": { "x": 224, "y": 833, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -482,7 +536,7 @@
   "version": "1.3.16.1-x64",
   "image": "sprite_sheet.png",
   "format": "RGBA8888",
-  "size": { "w": 256, "h": 352 },
+  "size": { "w": 1024, "h": 865 },
   "scale": "1"
  }
 }
