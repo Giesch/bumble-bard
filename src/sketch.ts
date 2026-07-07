@@ -65,6 +65,7 @@ class Animation {
 
   playOnce() {
     this.playing = "once";
+    this.current = 0;
   }
 }
 
@@ -78,12 +79,17 @@ let playerX: number;
 let playerY: number;
 let spriteSheet: p5.Image;
 let spriteAtlas: AsepriteJson;
-let bardHead: AsepriteOffsets;
 let bardHeadAnimation: Animation;
 let bardTorso: AsepriteOffsets;
 let bardLegs: AsepriteOffsets;
 let flipPlayer = false;
 let currentTime: number;
+
+let lastFrameInputs: typeof PLAYER_1;
+
+function justPressed(button: "A" | "B"): boolean {
+  return PLAYER_1[button] && !lastFrameInputs[button];
+}
 
 const sketch = (p: p5) => {
   p.preload = () => {
@@ -95,7 +101,6 @@ const sketch = (p: p5) => {
     currentTime = performance.now();
 
     const frames = spriteAtlas["frames"];
-    bardHead = frames.find((f) => f["filename"] === "bard-head 0")!.frame;
     bardHeadAnimation = new Animation(
       frames
         .filter((f) => f["filename"].startsWith("bard-head"))
@@ -117,7 +122,7 @@ const sketch = (p: p5) => {
     const deltaTime = now - currentTime;
     currentTime = now;
 
-    if (PLAYER_1.A) {
+    if (justPressed("A")) {
       bardHeadAnimation.playOnce();
     }
 
@@ -178,11 +183,13 @@ const sketch = (p: p5) => {
 
     // to let the legs underlap the toroso,
     // they're offset by 1, and drawn in reverse
-    const torsoY = playerY + bardHead.h;
+    const torsoY = playerY + bardHeadAnimation.frames[0].h;
     const legsY = torsoY + bardTorso.h - 1;
     drawSprite(bardLegs, playerX, legsY, flipPlayer);
     drawSprite(bardTorso, playerX, torsoY, flipPlayer);
     drawSprite(bardHeadAnimation.currentFrame(), playerX, playerY, flipPlayer);
+
+    lastFrameInputs = structuredClone(PLAYER_1);
   };
 };
 
