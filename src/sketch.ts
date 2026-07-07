@@ -80,8 +80,8 @@ let playerY: number;
 let spriteSheet: p5.Image;
 let spriteAtlas: AsepriteJson;
 let bardHeadAnimation: Animation;
-let bardTorso: AsepriteOffsets;
-let bardLegs: AsepriteOffsets;
+let bardTorsoAnimation: Animation;
+let bardLegsAnimation: Animation;
 let flipPlayer = false;
 let currentTime: number;
 
@@ -106,8 +106,16 @@ const sketch = (p: p5) => {
         .filter((f) => f["filename"].startsWith("bard-head"))
         .map((f) => f.frame),
     );
-    bardTorso = frames.find((f) => f["filename"] === "bard-torso 0")!.frame;
-    bardLegs = frames.find((f) => f["filename"] === "bard-legs 0")!.frame;
+    bardTorsoAnimation = new Animation(
+      frames
+        .filter((f) => f["filename"].startsWith("bard-torso"))
+        .map((f) => f.frame),
+    );
+    bardLegsAnimation = new Animation(
+      frames
+        .filter((f) => f["filename"].startsWith("bard-legs"))
+        .map((f) => f.frame),
+    );
 
     p.createCanvas(WIDTH, HEIGHT);
     playerX = WIDTH / 2;
@@ -179,14 +187,15 @@ const sketch = (p: p5) => {
 
     p.background(26, 26, 46);
 
+    // avoid blurring the pixel art drawn below
     p.noSmooth();
 
     // to let the legs underlap the toroso,
     // they're offset by 1, and drawn in reverse
     const torsoY = playerY + bardHeadAnimation.frames[0].h;
-    const legsY = torsoY + bardTorso.h - 1;
-    drawSprite(bardLegs, playerX, legsY, flipPlayer);
-    drawSprite(bardTorso, playerX, torsoY, flipPlayer);
+    const legsY = torsoY + bardTorsoAnimation.frames[0].h - 1;
+    drawSprite(bardLegsAnimation.currentFrame(), playerX, legsY, flipPlayer);
+    drawSprite(bardTorsoAnimation.currentFrame(), playerX, torsoY, flipPlayer);
     drawSprite(bardHeadAnimation.currentFrame(), playerX, playerY, flipPlayer);
 
     lastFrameInputs = structuredClone(PLAYER_1);
