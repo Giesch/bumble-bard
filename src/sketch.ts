@@ -1,13 +1,72 @@
 import p5 from "p5";
 import { PLAYER_1 } from "@rcade/plugin-input-classic";
 
-/** The source position and size of a sprite in the spritesheet png; sourced from aseprite json */
+/** the exported aseprite json */
+type AsepriteJson = {
+  frames: AsepriteFrame[];
+};
+
+/** the metadata for one frame */
 type AsepriteFrame = {
+  filename: string;
+  frame: AsepriteOffsets;
+};
+
+/** The source position and size of a sprite in the spritesheet png */
+type AsepriteOffsets = {
   x: number;
   y: number;
   w: number;
   h: number;
 };
+
+type AnimationPlaying = "once" | "loop" | "off";
+
+/** the state of a specific animation */
+class Animation {
+  /** the array of aseprite frames to loop through */
+  frames: AsepriteOffsets[];
+  /** the index of the current frame in the array */
+  current: number;
+  /** the accumulated milliseconds to 'spend' on moving the frame forward */
+  millis: number;
+  /** current play state */
+  playing: AnimationPlaying;
+
+  constructor(frames: AsepriteOffsets[]) {
+    this.frames = frames;
+    this.current = 0;
+    this.millis = 0;
+    this.playing = "off";
+  }
+
+  /** update the current frame based on time passed */
+  update(deltaTime: number) {
+    if (this.playing === "off") return;
+
+    this.millis += deltaTime;
+
+    while (this.millis >= 100) {
+      this.millis -= 100;
+      this.current += 1;
+    }
+
+    if (this.playing === "once" && this.current >= this.frames.length) {
+      this.playing = "off";
+      this.current = 0;
+    }
+
+    this.current %= this.frames.length;
+  }
+
+  currentFrame(): AsepriteOffsets {
+    return this.frames[this.current];
+  }
+
+  playOnce() {
+    this.playing = "once";
+  }
+}
 
 // Rcade game dimensions
 const WIDTH = 336;
@@ -18,24 +77,32 @@ const PLAYER_SIZE = 20;
 let playerX: number;
 let playerY: number;
 let spriteSheet: p5.Image;
-let spriteAtlas: any;
-let bardHead: AsepriteFrame;
-let bardTorso: AsepriteFrame;
-let bardLegs: AsepriteFrame;
+let spriteAtlas: AsepriteJson;
+let bardHead: AsepriteOffsets;
+let bardHeadAnimation: Animation;
+let bardTorso: AsepriteOffsets;
+let bardLegs: AsepriteOffsets;
 let flipPlayer = false;
+let currentTime: number;
 
 const sketch = (p: p5) => {
   p.preload = () => {
     spriteSheet = p.loadImage("/sprite_sheet.png");
-    spriteAtlas = p.loadJSON("/sprite_sheet.json");
+    spriteAtlas = p.loadJSON("/sprite_sheet.json") as AsepriteJson;
   };
 
   p.setup = () => {
-    const frames: any[] = spriteAtlas["frames"];
+    currentTime = performance.now();
 
-    bardHead = frames.find((f) => f["filename"] === "bard-head 0").frame;
-    bardTorso = frames.find((f) => f["filename"] === "bard-torso 0").frame;
-    bardLegs = frames.find((f) => f["filename"] === "bard-legs 0").frame;
+    const frames = spriteAtlas["frames"];
+    bardHead = frames.find((f) => f["filename"] === "bard-head 0")!.frame;
+    bardHeadAnimation = new Animation(
+      frames
+        .filter((f) => f["filename"].startsWith("bard-head"))
+        .map((f) => f.frame),
+    );
+    bardTorso = frames.find((f) => f["filename"] === "bard-torso 0")!.frame;
+    bardLegs = frames.find((f) => f["filename"] === "bard-legs 0")!.frame;
 
     p.createCanvas(WIDTH, HEIGHT);
     playerX = WIDTH / 2;
@@ -44,6 +111,17 @@ const sketch = (p: p5) => {
 
   p.draw = () => {
     // UPDATE
+
+    // update deltaTime
+    const now = performance.now();
+    const deltaTime = now - currentTime;
+    currentTime = now;
+
+    if (PLAYER_1.A) {
+      bardHeadAnimation.playOnce();
+    }
+
+    bardHeadAnimation.update(deltaTime);
 
     // Handle input from arcade controls
     if (PLAYER_1.DPAD.up) {
@@ -68,7 +146,7 @@ const sketch = (p: p5) => {
     // DRAW
 
     const drawSprite = (
-      f: AsepriteFrame,
+      f: AsepriteOffsets,
       x: number,
       y: number,
       flipX: boolean,
@@ -104,7 +182,7 @@ const sketch = (p: p5) => {
     const legsY = torsoY + bardTorso.h - 1;
     drawSprite(bardLegs, playerX, legsY, flipPlayer);
     drawSprite(bardTorso, playerX, torsoY, flipPlayer);
-    drawSprite(bardHead, playerX, playerY, flipPlayer);
+    drawSprite(bardHeadAnimation.currentFrame(), playerX, playerY, flipPlayer);
   };
 };
 
