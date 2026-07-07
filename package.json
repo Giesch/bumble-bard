@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "concurrently \"vite --port 5173 --strictPort\" \"rcade dev http://localhost:5173\"",
     "build": "vite build",
-    "sprites": "cd sprites && aseprite --batch *.aseprite --sheet sprite_sheet.png --data sprite_sheet.json --filename-format \"{title} {frame}\" --format json-array"
+    "sprites": "cd sprites && aseprite --batch *.aseprite --sheet sprite_sheet.png --data sprite_sheet.json --filename-format \"{title} {frame}\" --format json-array && mv *.png ../public/ && mv *.json ../public/"
   },
   "devDependencies": {
     "@types/p5": "^1.7.6",

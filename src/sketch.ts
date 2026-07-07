@@ -1,9 +1,21 @@
 import p5 from "p5";
 import { PLAYER_1, SYSTEM } from "@rcade/plugin-input-classic";
 
+/** The source position and size of a sprite in the spritesheet png */
+type AsepriteFrame = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+};
+
 // Rcade game dimensions
 const WIDTH = 336;
 const HEIGHT = 262;
+
+let spriteSheet: p5.Image;
+let spriteAtlas: any;
+let bardAssembled: AsepriteFrame;
 
 const sketch = (p: p5) => {
   let x: number;
@@ -12,13 +24,31 @@ const sketch = (p: p5) => {
   const ballSize = 20;
   let gameStarted = false;
 
+  p.preload = () => {
+    spriteSheet = p.loadImage("/sprite_sheet.png");
+    spriteAtlas = p.loadJSON("/sprite_sheet.json");
+  };
+
   p.setup = () => {
+    bardAssembled = spriteAtlas["frames"][0]["frame"];
+
     p.createCanvas(WIDTH, HEIGHT);
     x = WIDTH / 2;
     y = HEIGHT / 2;
   };
 
   p.draw = () => {
+    function drawSprite(f: AsepriteFrame, x: number, y: number) {
+      // prettier-ignore
+      p.image(
+        spriteSheet,
+        // screen position
+        x, y, f.w, f.h,
+        // sprite-sheet source position
+        f.x, f.y, f.w, f.h,
+      );
+    }
+
     p.background(26, 26, 46);
 
     if (!gameStarted) {
@@ -54,16 +84,8 @@ const sketch = (p: p5) => {
     x = p.constrain(x, ballSize / 2, WIDTH - ballSize / 2);
     y = p.constrain(y, ballSize / 2, HEIGHT - ballSize / 2);
 
-    // Draw ball (change color when A is pressed)
-    if (PLAYER_1.A) {
-      p.fill(255, 100, 100);
-    } else if (PLAYER_1.B) {
-      p.fill(100, 255, 100);
-    } else {
-      p.fill(100, 200, 255);
-    }
-    p.noStroke();
-    p.ellipse(x, y, ballSize, ballSize);
+    p.noSmooth();
+    drawSprite(bardAssembled, x, y);
   };
 };
 
