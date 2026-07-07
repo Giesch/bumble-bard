@@ -139,36 +139,37 @@ const sketch = (p: p5) => {
     const deltaTime = now - currentTime;
     currentTime = now;
 
-    if (justPressed("A")) {
+    // read player inputs
+
+    const pressedHwaet = justPressed("A");
+    if (pressedHwaet) {
       bardHeadAnimation.playOnce();
     }
-    if (PLAYER_1.B) {
+
+    const holdingLute = PLAYER_1.B;
+    if (holdingLute) {
       bardTorsoAnimation.loop();
     } else {
       bardTorsoAnimation.stop();
     }
 
-    // Handle input from arcade controls
-    if (PLAYER_1.DPAD.up) {
+    // update movement/facing
+    const dpad = PLAYER_1.DPAD;
+    if (dpad.up) {
       playerY -= SPEED;
     }
-    if (PLAYER_1.DPAD.down) {
+    if (dpad.down) {
       playerY += SPEED;
     }
-    if (PLAYER_1.DPAD.left) {
+    if (dpad.left) {
       flipPlayer = true;
       playerX -= SPEED;
     }
-    if (PLAYER_1.DPAD.right) {
+    if (dpad.right) {
       flipPlayer = false;
       playerX += SPEED;
     }
-
-    const isWalking =
-      PLAYER_1.DPAD.left ||
-      PLAYER_1.DPAD.right ||
-      PLAYER_1.DPAD.up ||
-      PLAYER_1.DPAD.down;
+    const isWalking = dpad.left || dpad.right || dpad.up || dpad.down;
     if (isWalking) {
       bardLegsAnimation.loop();
     } else {
@@ -180,15 +181,19 @@ const sketch = (p: p5) => {
     playerY = p.constrain(playerY, PLAYER_SIZE / 2, HEIGHT - PLAYER_SIZE / 2);
 
     bardHeadAnimation.update(deltaTime);
-    bardLegsAnimation.update(deltaTime);
     bardTorsoAnimation.update(deltaTime);
+    bardLegsAnimation.update(deltaTime);
 
     // DRAW
 
+    /** a helper for drawing a sub-slice of the sprite sheet */
     const drawSprite = (
+      // the source coordinates in the sheet
       f: AsepriteOffsets,
+      // the screen position to draw at
       x: number,
       y: number,
+      // whether to flip horizontally
       flipX: boolean,
     ) => {
       p.push();
