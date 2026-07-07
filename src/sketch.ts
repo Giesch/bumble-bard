@@ -16,13 +16,13 @@ const HEIGHT = 262;
 let spriteSheet: p5.Image;
 let spriteAtlas: any;
 let bardAssembled: AsepriteFrame;
+let flipPlayer = false;
 
 const sketch = (p: p5) => {
   let x: number;
   let y: number;
   const speed = 4;
   const ballSize = 20;
-  let gameStarted = false;
 
   p.preload = () => {
     spriteSheet = p.loadImage("/sprite_sheet.png");
@@ -38,33 +38,7 @@ const sketch = (p: p5) => {
   };
 
   p.draw = () => {
-    function drawSprite(f: AsepriteFrame, x: number, y: number) {
-      // prettier-ignore
-      p.image(
-        spriteSheet,
-        // screen position
-        x, y, f.w, f.h,
-        // sprite-sheet source position
-        f.x, f.y, f.w, f.h,
-      );
-    }
-
-    p.background(26, 26, 46);
-
-    if (!gameStarted) {
-      // Show start screen
-      p.fill(255);
-      p.textSize(18);
-      p.textAlign(p.CENTER, p.CENTER);
-      p.text("Press 1P START", WIDTH / 2, HEIGHT / 2);
-      p.textSize(12);
-      p.text("Use D-PAD to move", WIDTH / 2, HEIGHT / 2 + 30);
-
-      if (SYSTEM.ONE_PLAYER) {
-        gameStarted = true;
-      }
-      return;
-    }
+    // UPDATE
 
     // Handle input from arcade controls
     if (PLAYER_1.DPAD.up) {
@@ -74,9 +48,11 @@ const sketch = (p: p5) => {
       y += speed;
     }
     if (PLAYER_1.DPAD.left) {
+      flipPlayer = true;
       x -= speed;
     }
     if (PLAYER_1.DPAD.right) {
+      flipPlayer = false;
       x += speed;
     }
 
@@ -84,8 +60,39 @@ const sketch = (p: p5) => {
     x = p.constrain(x, ballSize / 2, WIDTH - ballSize / 2);
     y = p.constrain(y, ballSize / 2, HEIGHT - ballSize / 2);
 
+    // DRAW
+
+    const drawSprite = (
+      f: AsepriteFrame,
+      x: number,
+      y: number,
+      flipX: boolean,
+    ) => {
+      p.push();
+
+      if (flipX) {
+        p.translate(x + f.w, y);
+        p.scale(-1, 1);
+      } else {
+        p.translate(x, y);
+      }
+
+      // prettier-ignore
+      p.image(
+        spriteSheet,
+        // screen position (relies on translate call above)
+        0, 0, f.w, f.h,
+        // sprite-sheet source position
+        f.x, f.y, f.w, f.h,
+      );
+
+      p.pop();
+    };
+
+    p.background(26, 26, 46);
+
     p.noSmooth();
-    drawSprite(bardAssembled, x, y);
+    drawSprite(bardAssembled, x, y, flipPlayer);
   };
 };
 
