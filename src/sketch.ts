@@ -12,18 +12,17 @@ type AsepriteFrame = {
 // Rcade game dimensions
 const WIDTH = 336;
 const HEIGHT = 262;
+const SPEED = 4;
+const PLAYER_SIZE = 20;
 
+let playerX: number;
+let playerY: number;
 let spriteSheet: p5.Image;
 let spriteAtlas: any;
 let bardAssembled: AsepriteFrame;
 let flipPlayer = false;
 
 const sketch = (p: p5) => {
-  let x: number;
-  let y: number;
-  const speed = 4;
-  const ballSize = 20;
-
   p.preload = () => {
     spriteSheet = p.loadImage("/sprite_sheet.png");
     spriteAtlas = p.loadJSON("/sprite_sheet.json");
@@ -33,8 +32,8 @@ const sketch = (p: p5) => {
     bardAssembled = spriteAtlas["frames"][0]["frame"];
 
     p.createCanvas(WIDTH, HEIGHT);
-    x = WIDTH / 2;
-    y = HEIGHT / 2;
+    playerX = WIDTH / 2;
+    playerY = HEIGHT / 2;
   };
 
   p.draw = () => {
@@ -42,23 +41,23 @@ const sketch = (p: p5) => {
 
     // Handle input from arcade controls
     if (PLAYER_1.DPAD.up) {
-      y -= speed;
+      playerY -= SPEED;
     }
     if (PLAYER_1.DPAD.down) {
-      y += speed;
+      playerY += SPEED;
     }
     if (PLAYER_1.DPAD.left) {
       flipPlayer = true;
-      x -= speed;
+      playerX -= SPEED;
     }
     if (PLAYER_1.DPAD.right) {
       flipPlayer = false;
-      x += speed;
+      playerX += SPEED;
     }
 
-    // Keep ball in bounds
-    x = p.constrain(x, ballSize / 2, WIDTH - ballSize / 2);
-    y = p.constrain(y, ballSize / 2, HEIGHT - ballSize / 2);
+    // Keep player in bounds
+    playerX = p.constrain(playerX, PLAYER_SIZE / 2, WIDTH - PLAYER_SIZE / 2);
+    playerY = p.constrain(playerY, PLAYER_SIZE / 2, HEIGHT - PLAYER_SIZE / 2);
 
     // DRAW
 
@@ -92,7 +91,7 @@ const sketch = (p: p5) => {
     p.background(26, 26, 46);
 
     p.noSmooth();
-    drawSprite(bardAssembled, x, y, flipPlayer);
+    drawSprite(bardAssembled, playerX, playerY, flipPlayer);
   };
 };
 
