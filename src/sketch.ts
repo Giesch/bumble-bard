@@ -85,7 +85,6 @@ class Animation {
 const WIDTH = 336;
 const HEIGHT = 262;
 const SPEED = 2;
-const PLAYER_SIZE = 20;
 
 let playerX: number;
 let playerY: number;
@@ -96,6 +95,7 @@ let bardTorsoAnimation: Animation;
 let bardLegsAnimation: Animation;
 let flipPlayer = false;
 let currentTime: number;
+let background: AsepriteFrame;
 
 let audioSystem = new audio.AudioSystem();
 
@@ -171,6 +171,7 @@ const sketch = (p: p5) => {
         .filter((f) => f["filename"].startsWith("bard-legs"))
         .map((f) => f.frame),
     );
+    background = frames.find((f) => f.filename.startsWith("background"))!;
 
     p.createCanvas(WIDTH, HEIGHT);
     playerX = WIDTH / 2;
@@ -188,7 +189,6 @@ const sketch = (p: p5) => {
     // read player inputs
     let spinDelta = spinners.PLAYER_1.SPINNER.consume_step_delta();
     spin += spinDelta;
-    console.log({ spin, spinDelta });
     spinTimer += deltaTime;
     if (Math.abs(spin) >= 10) {
       spin = 0;
@@ -245,8 +245,8 @@ const sketch = (p: p5) => {
     }
 
     // Keep player in bounds
-    playerX = p.constrain(playerX, PLAYER_SIZE / 2, WIDTH - PLAYER_SIZE / 2);
-    playerY = p.constrain(playerY, PLAYER_SIZE / 2, HEIGHT - PLAYER_SIZE / 2);
+    playerX = p.constrain(playerX, 10, 300);
+    playerY = p.constrain(playerY, 60, 200);
 
     bardHeadAnimation.update(deltaTime);
     bardTorsoAnimation.update(deltaTime);
@@ -285,7 +285,8 @@ const sketch = (p: p5) => {
       p.pop();
     };
 
-    p.background(26, 26, 46);
+    drawSprite(background.frame, 0, 10, false);
+    drawSprite(background.frame, 0, -50, false);
 
     // avoid blurring the pixel art drawn below
     p.noSmooth();
