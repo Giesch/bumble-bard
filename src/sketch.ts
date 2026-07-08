@@ -97,6 +97,7 @@ let flipPlayer = false;
 let currentTime: number;
 
 let audioSystem = new audio.AudioSystem();
+
 let hwaetPaths = [
   "hwaet1.wav",
   "hwaet2.wav",
@@ -106,6 +107,17 @@ let hwaetPaths = [
   "hwaet_thoughtful.wav",
 ];
 let hwaets: audio.Track[];
+
+let lutePaths = [
+  "string_1.wav",
+  "string_2.wav",
+  "string_3.wav",
+  "string_4.wav",
+  "string_5.wav",
+  "string_6.wav",
+];
+let lutes: audio.Track[];
+let luteTimer = 0;
 
 let lastFrameInputs: typeof PLAYER_1;
 
@@ -122,6 +134,14 @@ const sketch = (p: p5) => {
     Promise.all(hwaetPaths.map((path) => audioSystem.load(`/audio/${path}`)))
       .then((tracks) => {
         hwaets = tracks;
+      })
+      .catch((err) => console.error("failed to load audio", err))
+      .finally(() => (p as any)._decrementPreload());
+
+    (p as any)._incrementPreload();
+    Promise.all(lutePaths.map((path) => audioSystem.load(`/audio/${path}`)))
+      .then((tracks) => {
+        lutes = tracks;
       })
       .catch((err) => console.error("failed to load audio", err))
       .finally(() => (p as any)._decrementPreload());
@@ -173,8 +193,16 @@ const sketch = (p: p5) => {
     const holdingLute = PLAYER_1.B;
     if (holdingLute) {
       bardTorsoAnimation.loop();
+      luteTimer += deltaTime;
+      if (luteTimer >= 750) {
+        luteTimer = 0;
+        const i = Math.floor(Math.random() * lutes.length);
+        const track = lutes[i];
+        audioSystem.play(track);
+      }
     } else {
       bardTorsoAnimation.stop();
+      luteTimer = 0;
     }
 
     // update movement/facing
