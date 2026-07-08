@@ -4,8 +4,8 @@ export class AudioSystem {
   audioCtx: AudioContext;
   musicGain: GainNode;
 
-  constructor(audioCtx: AudioContext) {
-    this.audioCtx = audioCtx;
+  constructor() {
+    this.audioCtx = new AudioContext();
     this.musicGain = this.audioCtx.createGain();
     this.musicGain.gain.value = VOLUME;
     this.musicGain.connect(this.audioCtx.destination);

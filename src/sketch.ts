@@ -1,6 +1,8 @@
 import p5 from "p5";
 import { PLAYER_1 } from "@rcade/plugin-input-classic";
 
+import * as audio from "./audio";
+
 /** the exported aseprite json */
 type AsepriteJson = {
   frames: AsepriteFrame[];
@@ -94,6 +96,17 @@ let bardLegsAnimation: Animation;
 let flipPlayer = false;
 let currentTime: number;
 
+let audioSystem = new audio.AudioSystem();
+let hwaetPaths = [
+  "hwaet1.wav",
+  "hwaet2.wav",
+  "hwaet3.wav",
+  "hwaet_again.wav",
+  "hwaet_sung.wav",
+  "hwaet_thoughtful.wav",
+];
+let hwaets: audio.Track[];
+
 let lastFrameInputs: typeof PLAYER_1;
 
 function justPressed(button: "A" | "B"): boolean {
@@ -104,6 +117,14 @@ const sketch = (p: p5) => {
   p.preload = () => {
     spriteSheet = p.loadImage("/sprite_sheet.png");
     spriteAtlas = p.loadJSON("/sprite_sheet.json") as AsepriteJson;
+
+    (p as any)._incrementPreload();
+    Promise.all(hwaetPaths.map((path) => audioSystem.load(`/audio/${path}`)))
+      .then((tracks) => {
+        hwaets = tracks;
+      })
+      .catch((err) => console.error("failed to load audio", err))
+      .finally(() => (p as any)._decrementPreload());
   };
 
   p.setup = () => {
@@ -144,6 +165,9 @@ const sketch = (p: p5) => {
     const pressedHwaet = justPressed("A");
     if (pressedHwaet) {
       bardHeadAnimation.playOnce();
+      const i = Math.floor(Math.random() * hwaets.length);
+      const track = hwaets[i];
+      audioSystem.play(track);
     }
 
     const holdingLute = PLAYER_1.B;
