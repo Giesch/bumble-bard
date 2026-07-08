@@ -96,6 +96,7 @@ let bardLegsAnimation: Animation;
 let flipPlayer = false;
 let currentTime: number;
 let background: AsepriteFrame;
+let daneOne: AsepriteFrame;
 
 let audioSystem = new audio.AudioSystem();
 
@@ -182,7 +183,9 @@ const sketch = (p: p5) => {
         .filter((f) => f["filename"].startsWith("bard-legs"))
         .map((f) => f.frame),
     );
+
     background = frames.find((f) => f.filename.startsWith("background"))!;
+    daneOne = frames.find((f) => f.filename.startsWith("angry-dane-1"))!;
 
     p.createCanvas(WIDTH, HEIGHT);
     playerX = WIDTH / 2;
@@ -317,6 +320,17 @@ const sketch = (p: p5) => {
     drawSprite(bardLegsAnimation.currentFrame(), playerX, legsY, flipPlayer);
     drawSprite(bardTorsoAnimation.currentFrame(), playerX, torsoY, flipPlayer);
     drawSprite(bardHeadAnimation.currentFrame(), playerX, playerY, flipPlayer);
+
+    for (let i = 0; i < 8; i++) {
+      const x = -75 + i * 50;
+      const y = 185;
+      drawSprite(daneOne.frame, x, y, false);
+    }
+    for (let i = 0; i < 8; i++) {
+      const x = -50 + i * 50;
+      const y = 200;
+      drawSprite(daneOne.frame, x, y, false);
+    }
 
     lastFrameInputs = structuredClone(PLAYER_1);
   };
