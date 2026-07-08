@@ -109,6 +109,9 @@ let hwaetPaths = [
 ];
 let hwaets: audio.Track[];
 
+let songPaths = ["baba.wav", "trololol.wav"];
+let songs: audio.Track[];
+
 let lutePaths = [
   "string_1.wav",
   "string_2.wav",
@@ -139,6 +142,14 @@ const sketch = (p: p5) => {
     Promise.all(hwaetPaths.map((path) => audioSystem.load(`/audio/${path}`)))
       .then((tracks) => {
         hwaets = tracks;
+      })
+      .catch((err) => console.error("failed to load audio", err))
+      .finally(() => (p as any)._decrementPreload());
+
+    (p as any)._incrementPreload();
+    Promise.all(songPaths.map((path) => audioSystem.load(`/audio/${path}`)))
+      .then((tracks) => {
+        songs = tracks;
       })
       .catch((err) => console.error("failed to load audio", err))
       .finally(() => (p as any)._decrementPreload());
@@ -218,6 +229,14 @@ const sketch = (p: p5) => {
       bardHeadAnimation.playOnce();
       const i = Math.floor(Math.random() * hwaets.length);
       const track = hwaets[i];
+      audioSystem.play(track);
+    }
+
+    const pressedSing = justPressed("B");
+    if (pressedSing) {
+      bardHeadAnimation.playOnce();
+      const i = Math.floor(Math.random() * songs.length);
+      const track = songs[i];
       audioSystem.play(track);
     }
 
