@@ -1,5 +1,6 @@
 import p5 from "p5";
 import { PLAYER_1 } from "@rcade/plugin-input-classic";
+import * as spinners from "@rcade/plugin-input-spinners";
 
 import * as audio from "./audio";
 
@@ -117,7 +118,11 @@ let lutePaths = [
   "string_6.wav",
 ];
 let lutes: audio.Track[];
+let spinTimer = 0;
+let lutePlaying = false;
 let luteTimer = 0;
+
+let spin = 0;
 
 let lastFrameInputs: typeof PLAYER_1;
 
@@ -181,17 +186,20 @@ const sketch = (p: p5) => {
     currentTime = now;
 
     // read player inputs
-
-    const pressedHwaet = justPressed("A");
-    if (pressedHwaet) {
-      bardHeadAnimation.playOnce();
-      const i = Math.floor(Math.random() * hwaets.length);
-      const track = hwaets[i];
-      audioSystem.play(track);
+    let spinDelta = spinners.PLAYER_1.SPINNER.consume_step_delta();
+    spin += spinDelta;
+    console.log({ spin, spinDelta });
+    spinTimer += deltaTime;
+    if (Math.abs(spin) >= 10) {
+      spin = 0;
+      spinTimer = 0;
+      lutePlaying = true;
+    } else {
+      if (spinTimer >= 500) {
+        lutePlaying = false;
+      }
     }
-
-    const holdingLute = PLAYER_1.B;
-    if (holdingLute) {
+    if (lutePlaying) {
       bardTorsoAnimation.loop();
       luteTimer += deltaTime;
       if (luteTimer >= 750) {
@@ -203,6 +211,14 @@ const sketch = (p: p5) => {
     } else {
       bardTorsoAnimation.stop();
       luteTimer = 0;
+    }
+
+    const pressedHwaet = justPressed("A");
+    if (pressedHwaet) {
+      bardHeadAnimation.playOnce();
+      const i = Math.floor(Math.random() * hwaets.length);
+      const track = hwaets[i];
+      audioSystem.play(track);
     }
 
     // update movement/facing
